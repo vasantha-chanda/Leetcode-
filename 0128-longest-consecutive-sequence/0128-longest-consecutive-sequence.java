@@ -3,33 +3,24 @@ import java.util.Set;
 
 class Solution {
     public int longestConsecutive(int[] nums) {
-        if (nums.length == 0) {
-            return 0; // If the array is empty, return 0
-        }
-
-        Set<Integer> numSet = new HashSet<>();
-        for (int num : nums) {
-            numSet.add(num);
-        }
-
-        int maxLength = 0;
-
-        for (int num : numSet) {
-            // Check if num is the start of a sequence
-            if (!numSet.contains(num - 1)) {
-                int currentNum = num;
-                int currentStreak = 1;
-
-                // Increment the streak while the next consecutive number exists
-                while (numSet.contains(currentNum + 1)) {
-                    currentNum++;
-                    currentStreak++;
+        int n=nums.length;
+        if(n==0)    return 0;
+        
+        Set<Integer>st=new HashSet<>();
+        for(int i:nums) st.add(i);
+        
+        int ans=1; 
+        for(int i:st){
+            if(!st.contains(i-1)){
+                int cnt=1;
+                int x=i;
+                while(st.contains(x+1)){
+                    cnt+=1;
+                    x+=1;
                 }
-
-                maxLength = Math.max(maxLength, currentStreak);
+                ans=Math.max(ans,cnt);
             }
         }
-
-        return maxLength;
+        return ans;
     }
 }
