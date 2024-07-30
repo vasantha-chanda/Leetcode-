@@ -7,8 +7,9 @@ class Solution {
         fast=sumSquareDigit(sumSquareDigit(fast));
         }while(slow!=fast);
         
-       return slow==1;
         
+       
+        return slow == 1;
         
     }
    
